@@ -3,7 +3,7 @@ namespace PokemonReviewApp.Api.Models;
 public abstract class EntityBase
 {
     public Guid Id { get; set; } = new();
-    public Status Status { get; set; }
+    public Status Status { get; set; } = Status.Active;
     public DateTime CraetedDate { get; set; } = DateTime.UtcNow;
     public DateTime UpdatedDate { get; set; }
 }
