@@ -6,10 +6,11 @@ builder.ConfigureServices();
 
 var app = builder.Build();
 
+app.UseExceptionHandler(exceptionHanlerApp =>
+    exceptionHanlerApp.ConfigureExceptionHanlder());
+
 if (args.Length == 1 && args[0].Equals("seeddata", StringComparison.CurrentCultureIgnoreCase))
-{
-    app.SeedDataContext();
-}
+    app.UseSeedData();
 
 if (app.Environment.IsDevelopment())
 {

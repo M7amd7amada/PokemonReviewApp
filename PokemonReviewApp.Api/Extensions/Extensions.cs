@@ -18,7 +18,7 @@ public static class Extensions
             options.UseSqlServer(conneectionString));
     }
 
-    public static void SeedDataContext(this IHost app)
+    public static void UseSeedData(this IHost app)
     {
         var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 
