@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
 using PokemonReviewApp.Api.Data;
+using PokemonReviewApp.Api.Interfaces;
+using PokemonReviewApp.Api.Repositories;
 
 namespace PokemonReviewApp.Api.Extensions;
 
@@ -14,6 +16,8 @@ public static class Extensions
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddTransient<SeedData>();
+        builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
+        builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(conneectionString));
     }
